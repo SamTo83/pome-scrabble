@@ -23,10 +23,10 @@ export default function Index() {
       </Head>
       <div>
         <div className="bg-[url('../images/background.PNG')] bg-no-repeat bg-cover bg-center flex flex-col justify-center shadow-md min-h-screen ">
-          <h1 className="font-Manrope text-7xl flex justify-center pt-20 pb-5 drop-shadow-2xl font-semibold">
+          <h1 className="font-Manrope text-6xl flex justify-center pt-20 pb-5 drop-shadow-2xl font-bold">
             Pome Scrabble
           </h1>
-          <p className="font-['Nanum+Pen+Script'] text-3xl pb-10 flex justify-center drop-shadow-2xl text-purple">
+          <p className="font-Nanum text-5xl test-shadow pb-10 flex justify-center drop-shadow-2xl text-purple">
             Cheat to win!
           </p>
           <div className="flex justify-center">
@@ -50,7 +50,7 @@ export default function Index() {
       </div>
       <div className="flex justify-center">
       <div className="flex justify-center w-3/5">
-        <div className="grid grid-rows-2 grid-cols-2 gap-5 p-5">
+        <div className="grid grid-rows-2 grid-cols-2 gap-12 p-5">
         {letters.length >= 2 &&
           sortedWords.map((wordObject, index) => {
             if (index === 0) return

@@ -1,12 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
 
-@font-face {
+/* @font-face {
     font-family: "Marope";
     src: url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap");
-
-    font-family: "Nanum+Pen+Script";
-    src: url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
-  };
+  }; */

@@ -17,7 +17,7 @@ const TopHit = ({ wordObject }) => {
     <div >
       <h4 className="text-2xl flex justify-center pt-5">Top hit</h4>
       <div className="flex justify-center">
-      <div className="flex flex-col w-96 items-center gap-4 my-12 pt-10">
+      <div className="flex flex-col w-96 items-center gap-4 my-12 pt-6">
         <span className="flex text-center">
           {letterScores.map((letterObj, index) => {
             const { letter, score } = letterObj;

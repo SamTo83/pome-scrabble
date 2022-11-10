@@ -1,12 +1,12 @@
-
+// const plugin = require('tailwindcss/plugin');
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
   content: ["./*/*.js"],
   theme: {
     fontFamily: {
-      // 'Manrope': ['Marope'],
-      'Nanum+Pen+Script': ['Nanum+Pen+Script']
+      // 'Manrope': 'Marope',
+      'Nanum': 'Nanum Pen Script'
     },
     extend: {
       backgroundImage: {
@@ -19,5 +19,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
