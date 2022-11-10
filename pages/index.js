@@ -1,44 +1,66 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import scrabble from "@nosweat/scrabble"; //use scrabble.find(letters)
-import { getWordScore } from "../utils/word-score";
-
-/* 
-TODO:
-- rewrite parts of the JSX to sort words by wordscore (highest scoring at the top)
-*/
+import OtherWords from "../component/OtherWords";
+import { convertToObject, wordSort } from "../utils/word-score";
+import TopHit from "../component/TopHit";
 
 export default function Index() {
   const [letters, setLetters] = useState("cyigjuw");
+  const [sortedWords, setSortedWords] = useState([]);
+
+  useEffect(() => {
+    if (!(letters.length >= 2)) return
+    setSortedWords(wordSort(scrabble.find(letters).map((word) => convertToObject(word))))
+  }, [letters])
+
   return (
     <div>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap" rel="stylesheet"></link>
       </Head>
       <div>
-        <main>
-          <h1>Pome scrabble</h1>
-          <p>Cheat to win!</p>
-          <input
-            type="text"
-            value={letters}
-            maxLength={7}
-            onChange={(e) => {
-              setLetters(e.target.value);
-            }}
-          />
-          <ul>
-            {letters.length > 2 &&
-              scrabble.find(letters).map((word, index) => {
-                return (
-                  <li key={index}>
-                    {word} ({getWordScore(word)})
-                  </li>
-                );
-              })}
-          </ul>
-        </main>
+        <div className="bg-[url('../images/background.PNG')] bg-no-repeat bg-cover bg-center flex flex-col justify-center shadow-md min-h-screen ">
+          <h1 className="font-Manrope text-7xl flex justify-center pt-20 pb-5 drop-shadow-2xl font-semibold">
+            Pome Scrabble
+          </h1>
+          <p className="font-['Nanum+Pen+Script'] text-3xl pb-10 flex justify-center drop-shadow-2xl text-purple">
+            Cheat to win!
+          </p>
+          <div className="flex justify-center">
+            <div className="flex flex-col">
+              <input
+                className="rounded-full p-2 pl-5 shadow-md text-xl font-normal border-solid border-2 w-96"
+                type="text"
+                value={letters}
+                maxLength={7}
+                onChange={(e) => {
+                  setLetters(e.target.value);
+                }}
+              />
+            </div>
+          </div>
+          <div className="">
+          <TopHit wordObject={sortedWords[0]} />
+          </div>
+        </div>
+        <h4 className="flex justify-center py-7 font-normal text-xl">Other Words...</h4>
       </div>
+      <div className="flex justify-center">
+      <div className="flex justify-center w-3/5">
+        <div className="grid grid-rows-2 grid-cols-2 gap-5 p-5">
+        {letters.length >= 2 &&
+          sortedWords.map((wordObject, index) => {
+            if (index === 0) return
+            return <OtherWords key={index} wordObject={wordObject} />;
+          })
+        }
+        </div>
+      </div>
+      </div>
+
     </div>
   );
 }
